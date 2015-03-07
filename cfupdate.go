@@ -28,9 +28,8 @@ var Config struct {
 		Id       string
 	}
 	History struct {
-		LastIP     string
-		LastSet    int64
-		NextVerify int64
+		LastIP  string
+		LastSet int64
 	}
 }
 
@@ -105,7 +104,7 @@ func run(c *cli.Context) {
 		}
 		Config.History.LastIP = publicIP
 		Config.History.LastSet = time.Now().Unix()
-		Config.History.NextVerify = time.Now().Add(14 * time.Minute).Unix()
+
 		if err := setState(config, &Config); err != nil {
 			fmt.Println("error: ", err.Error())
 			os.Exit(1)
